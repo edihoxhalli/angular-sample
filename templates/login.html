@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="form-signin">
+        <h2 class="form-signin-heading">Login</h2>
+        <div class="login-wrap">
+            <input ng-model="user.email" type="text" class="form-control" placeholder="Your email" autofocus>
+            <input ng-enter="signIn(user)" ng-model="user.pwdForLogin" type="password" class="form-control" placeholder="Your password">
+            <button ng-click="signIn(user)" class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
+        </div>
+    </div>
+</div>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>

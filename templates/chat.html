@@ -1,0 +1,127 @@
+
+<section id="container" class="">
+    <div ng-include src="'templates/includes/header.html'"></div>
+    <div ng-include src="'templates/includes/sidebar.html'"></div>
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!--timeline start-->
+                    <section class="panel">
+                        <div class="panel-body">
+                            <div class="text-center mbot30">
+                                <h3 class="timeline-title">{{rooms.topic}} <span style="text-transform:initial;">nga</span> <em>{{rooms.from}}</em></h3>
+                                <p class="t-info">Më poshtë mesazhet e renditura sipas rendit kronologjik</p>
+                            </div>
+                            <div class="timeline" ng-repeat="chat in chats | orderBy:'createdAt':true">
+                                <article ng-if="chat.from == 'SPEEDTAXI'" class="timeline-item">
+                                    <div class="timeline-desk">
+                                        <div class="panel">
+                                            <div class="panel-body">
+                                                <span class="arrow"></span>
+                                                <span class="timeline-icon red"></span>
+                                                <span class="timeline-date" am-time-ago="chat.createdAt"></span>
+                                                <h1 class="red">{{chat.from}}</h1>
+                                                <p>{{chat.message}}</p>
+                                                <button style="margin-top:10px;" ng-if="chat.from == 'SPEEDTAXI' && rooms.status == 1" ng-click="remove(chat)" class="btn btn-xs btn-danger">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                                <article ng-if="chat.from != 'SPEEDTAXI'" class="timeline-item alt">
+                                    <div class="timeline-desk">
+                                        <div class="panel">
+                                            <div class="panel-body">
+                                                <span class="arrow-alt"></span>
+                                                <span class="timeline-icon green"></span>
+                                                <span class="timeline-date" am-time-ago="chat.createdAt"></span>
+                                                <h1 class="green">{{chat.from}}</h1>
+                                                <p>{{chat.message}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="clearfix">&nbsp;</div>
+                        </div>
+                    </section>
+                    <!--timeline end-->
+                </div>                        
+                <div class="col-lg-4">
+                    <div class="col-lg-12" ng-if="rooms.status == 1">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                Statusi i chatit
+                            </header>
+                            <div class="panel-body">
+                                <button ng-click="close()" class="btn btn-danger">Mbyll chat</button>
+                                <button ng-click="nosolution()" class="btn btn-warning">Chat i pazgjidhur</button>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-12" ng-if="rooms.status == 1">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                Zona e chatimit
+                                <button ng-show="openMaponHide" class="btn btn-default btn-xs pull-right" ng-click="openGoogleMap()">Harta</button>
+                                <button ng-hide="openMaponHide" class="btn btn-default btn-xs pull-right" ng-click="googleMap(rooms.lat, rooms.lng)">Harta</button>
+                            </header>
+                            <div class="panel-body">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-lg-12">
+                                            <textarea ng-enter="sendMessage(IM.textMessage)" ng-model="IM.textMessage" type="text" rows="5" placeholder="Përgjigjja juaj" id="msg" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-12">
+                                            <button ng-click="sendMessage(IM.textMessage)" class="btn btn-success btn-block" type="submit">Dërgo</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-12" ng-show="openMap" ng-if="rooms.status == 1">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                Vendodhja e klientit
+                                <button class="btn btn-danger btn-xs pull-right" ng-click="closeGoogleMap()">Mbyll</button>
+                            </header>
+                            <div class="panel-body">
+                                <div id="gmap_basic" class="gmaps"></div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!--main content end-->
+</section>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="js/jquery.scrollTo.min.js"></script>
+<script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="js/respond.min.js" ></script>
+<!-- BEGIN:File Upload Plugin JS files-->
+<script src="assets/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<!-- The Templates plugin is included to render the upload/download listings -->
+<script src="assets/jquery-file-upload/js/vendor/tmpl.min.js"></script>
+<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+<script src="assets/jquery-file-upload/js/vendor/load-image.min.js"></script>
+<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+<script src="assets/jquery-file-upload/js/vendor/canvas-to-blob.min.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="assets/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="assets/jquery-file-upload/js/jquery.fileupload.js"></script>
+<!-- The File Upload file processing plugin -->
+<script src="assets/jquery-file-upload/js/jquery.fileupload-fp.js"></script>
+<!-- The File Upload user interface plugin -->
+<script src="assets/jquery-file-upload/js/jquery.fileupload-ui.js"></script>
+<!--common script for all pages-->
+<script src="js/common-scripts.js"></script>

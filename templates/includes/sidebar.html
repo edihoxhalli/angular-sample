@@ -1,0 +1,61 @@
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar"  class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li>
+                    <a href="#/taxirequests" >
+                        <i class="icon-thumbs-up"></i>
+                        <span>Taxi requests</span>
+                        <span ng-if="newTaxiRequestsNotifications.length > 0" class="label label-danger pull-right mail-info">{{newTaxiRequestsNotifications.length}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/chatrequests" >
+                        <i class="icon-comment"></i>
+                        <span>Chat requests</span>
+                        <span ng-if="newChatRequestsNotifications.length > 0" class="label label-danger pull-right mail-info">{{newChatRequestsNotifications.length}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/resrequests" >
+                        <i class="icon-comment"></i>
+                        <span>Reservations</span>
+                        <span ng-if="newChatRequestsNotifications.length > 0" class="label label-danger pull-right mail-info">{{newChatRequestsNotifications.length}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/stations" >
+                        <i class="icon-map-marker"></i>
+                        <span>Taxi stations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/taxis" >
+                        <i class="icon-star"></i>
+                        <span>Taxi</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/login">
+                        <i class="icon-user"></i>
+                        <span>Login Page</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/lockscreen">
+                        <i class="icon-lock"></i>
+                        <span>Lock Screen</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/notfound">
+                        <i class="icon-windows"></i>
+                        <span>404 Error</span>
+                    </a>
+                </li>
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
